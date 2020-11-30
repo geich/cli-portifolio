@@ -1,5 +1,5 @@
 import React from 'react'
-import MiniDrawer from '../components/terminal/miniDrawer/miniDrawer'
+import MiniDrawer from '../components/miniDrawer/miniDrawer'
 
 const Projects:React.FC = () => {
   return (
