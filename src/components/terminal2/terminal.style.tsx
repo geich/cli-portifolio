@@ -71,8 +71,9 @@ export const TerminalInput = styled.input`
     color: green;
 `
 
-
 export const TerminalParagraph = styled.p`
     width: 100%;
     background-color: transparent;
+    font-size: 15px;
+    margin: 10px 0px;
 `

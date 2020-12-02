@@ -62,6 +62,7 @@ const Terminal:React.FC<ITerminal> = ({ commands }) => {
           <WindowButton id='green' onClick={handleMaximise} />
         </TerminalHead>
         <TerminalBody>
+          <TerminalParagraph>&gt; digite Help para ver todos os comandos</TerminalParagraph>
           <TerminalParagraph>&gt; <TerminalInput ref={input} onKeyDown={handleInput} /></TerminalParagraph>
         </TerminalBody>
       </TerminalCli>
