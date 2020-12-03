@@ -12,8 +12,8 @@ export const TerminalBox = styled.div`
 export const TerminalCli = styled.div`
     box-shadow: #040404 7px 7px 10px 0px;
     background-color: #000000;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 700px;
+    max-height: 700px;
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -61,19 +61,23 @@ export const WindowButton = styled.div`
 `
 export const TerminalBody = styled.div`
     width: 100%;
-    height: 100%;
+    height: 95%;
     padding: 20px;
+    overflow-x: auto;
+    scrollbar-width: thin;
 `
 
 export const TerminalInput = styled.input`
     background-color: transparent;
     border: none;
     color: green;
+    margin-top: 30px;
 `
 
 export const TerminalParagraph = styled.p`
     width: 100%;
     background-color: transparent;
-    font-size: 15px;
-    margin: 10px 0px;
+    font-size: 13px;
+    margin: 20px 0px;
+    white-space: pre-wrap;
 `
