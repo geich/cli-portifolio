@@ -1,68 +1,71 @@
-import React from 'react'
-import TerminalReact from 'terminal-in-react'
+import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 
-import { TerminalBox } from './terminal.style'
+import {
+  TerminalBox,
+  TerminalCli,
+  TerminalHead,
+  WindowButton,
+  TerminalBody,
+  TerminalInput,
+  TerminalParagraph
+} from './terminal.style'
 
-const Terminal:React.FC = () => {
-  return (
-    <TerminalBox>
-      <TerminalReact
-        color='green'
-        backgroundColor='black'
-        barColor='black'
-        style={{ borderRadius: '10px', overflow: 'hidden', boxShadow: '#040404 7px 7px 10px 0px', height: '650px' }}
-        commandPassThrough={cmd => `-PassedThrough:${cmd}: command not found`}
-        commands={{
-          init: () => 'Portifólio em construção',
-          whoisgabriel: () => 'Olá, Meu nome é Gabriel Eich, tenho 25 anos e trabalho com programação há 3 anos, com foco em js e cloud.',
-          gabrielskills: () =>
-`
-Frontend:
-- Javascript
-- React
-- Typescript
-- Nextjs
-- Apollo
-- GraphQL
-- HTML
-- CSS
-
-Backend:
-- Node.js
-- Express.js
-- AdonisJs
-- SQL
-- NoSQL
-- Typescript
-- Python
-- Um pouquito de Machine Learning/Deep Learning`,
-          gabrielworks: () => 'Atualmente trabalho como CTO na ZAPLY'
-        }}
-        // Components without descriptions type https://github.com/nitin42/terminal-in-react/pull/71
-        // @ts-ignore
-        descriptions={{
-          init: 'Open portifolio details',
-          whoisgabriel: 'Open Gabriel resume',
-          gabrielskills: 'Open Gabriel skills',
-          gabrielworks: 'Open actual Gabriel´s work'
-        }}
-
-        msg={
-`Olá, me chamo Gabriel e esse é meu portifólio.
-
-comandos rápidos:
-
-- para entrar no portifolio completo digite init ou feche o terminal no botão vermelho.
-
-- para ver um breve resumo digite whoisgabriel
-
-- para ver minhas skills digite gabrielskills
-
-- para ver meu trabalho atual digite gabrielswork
-
-- para outros comandos digite help`
+interface ITerminal {
+    commands: {
+        [key: string]: {
+            action: () => any
+            description: string
         }
-      />
+    }
+}
+
+const Terminal:React.FC<ITerminal> = ({ commands }) => {
+  const input = useRef(null)
+  const router = useRouter()
+  const [terminalId, setTerminalId] = useState('minimized')
+
+  useEffect(() => input.current.focus())
+
+  const cmds = {
+    ...commands,
+    help: {
+      action: () => Object.keys(cmds).map(c => `${c}: ${cmds[c].description} \n`).join('\n'),
+      description: 'Lista todos os comandos'
+    }
+  }
+
+  const handleClose = () => router.push('/about')
+  const handleMaximise = () => terminalId === 'minimized' ? setTerminalId('maximized') : setTerminalId('minimized')
+  const handleSetFocus = () => input.current.focus()
+  const handleInput = (e:React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      const elem = e.target as HTMLInputElement
+      const text = elem.value
+      const cmd = cmds[text]
+      if (!cmd) {
+        alert('Comando não encontrado')
+        return false
+      }
+      const cmdResult = cmd.action()
+      alert(cmdResult)
+    }
+
+    return false
+  }
+  return (
+    <TerminalBox onClick={handleSetFocus}>
+      <TerminalCli id={terminalId}>
+        <TerminalHead>
+          <WindowButton id='red' onClick={handleClose} />
+          <WindowButton id='yellow' />
+          <WindowButton id='green' onClick={handleMaximise} />
+        </TerminalHead>
+        <TerminalBody>
+          <TerminalParagraph>&gt; digite help para ver todos os comandos</TerminalParagraph>
+          <TerminalParagraph>&gt; <TerminalInput ref={input} onKeyDown={handleInput} /></TerminalParagraph>
+        </TerminalBody>
+      </TerminalCli>
     </TerminalBox>
   )
 }
