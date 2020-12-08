@@ -18,10 +18,11 @@ interface ITerminal {
             description: string
         }
     },
-    initialMessage: string
+    initialMessage: string,
+    buttons?: { red?: () => any, yellow?: () => any, green?: ()=> any}
 }
 
-const Terminal:React.FC<ITerminal> = ({ commands, initialMessage }) => {
+const Terminal:React.FC<ITerminal> = ({ commands, initialMessage, buttons = {} }) => {
     const input = useRef(null)
     const router = useRouter()
 
@@ -41,6 +42,7 @@ const Terminal:React.FC<ITerminal> = ({ commands, initialMessage }) => {
     const handleClose = () => router.push('/about')
     const handleMaximise = () => terminalId === 'minimized' ? setTerminalId('maximized') : setTerminalId('minimized')
     const handleSetFocus = () => input.current.focus()
+    const handle = () => false
     const handleInput = (e:React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             const elem = e.target as HTMLInputElement
@@ -69,9 +71,9 @@ const Terminal:React.FC<ITerminal> = ({ commands, initialMessage }) => {
         <TerminalBox onClick={handleSetFocus}>
             <TerminalCli id={terminalId}>
                 <TerminalHead>
-                    <WindowButton id='red' onClick={handleClose} />
-                    <WindowButton id='yellow' />
-                    <WindowButton id='green' onClick={handleMaximise} />
+                    <WindowButton id='red' onClick={buttons.red || handleClose} />
+                    <WindowButton id='yellow' onClick={buttons.yellow || handle }/>
+                    <WindowButton id='green' onClick={buttons.green || handleMaximise} />
                 </TerminalHead>
                 <TerminalBody>
                     <TerminalParagraph>{initialMessage}</TerminalParagraph>
