@@ -6,7 +6,7 @@ const Test:React.FC = () => {
         <Terminal
             commands = {{
                 init: {
-                    action: () => document.location.href = '/about',
+                    action: () => { document.location.href = '/about' },
                     description: 'Apenas para teste'
                 },
                 test2: {
@@ -62,14 +62,11 @@ comandos rápidos:
     - para outros comandos digite help
             `}
 
-
             buttons = {{
-                red: () => document.location.href = '/about'
+                red: () => { document.location.href = '/about' }
             }}
         />
     )
-
-
 }
 
 export default Test
