@@ -14,12 +14,12 @@ import {
 interface ITerminal {
     commands: {
         [key: string]: {
-            action: () => any
+            action: () => string | void
             description: string
         }
     },
     initialMessage: string,
-    buttons?: { red?: () => any, yellow?: () => any, green?: ()=> any}
+    buttons?: { red?: () => void, yellow?: () => void, green?: ()=> void}
 }
 
 const Terminal:React.FC<ITerminal> = ({ commands, initialMessage, buttons = {} }) => {

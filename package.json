@@ -9,8 +9,6 @@
     "deploy": "npm run build && gcloud app deploy"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
     "next": "9.5.2",
     "next-images": "^1.4.1",
     "react": "16.13.1",
@@ -19,7 +17,6 @@
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
-    "@types/material-ui": "^0.21.8",
     "@types/node": "^14.6.0",
     "@types/react": "^16.9.46",
     "@types/styled-components": "^5.1.2",
