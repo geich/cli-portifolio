@@ -4,15 +4,14 @@ import Header from '../../components/header'
 import { AboutBody, AboutContent } from './pages.style'
 import PageContent from '../../components/pageContent'
 
-const About:React.FC = () => {
+const About:React.FC = ({ children }) => {
     return (
         <AboutBody>
             <Menu />
             <AboutContent>
                 <Header />
                 <PageContent>
-                    Test
-                    test2
+                    {children}
                 </PageContent>
             </AboutContent>
         </AboutBody>
