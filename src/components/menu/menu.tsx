@@ -1,12 +1,13 @@
 import React from 'react'
-import { MenuBox, SItem } from './menu.style'
+import { MenuBox } from './menu.style'
 import { itens } from '../../helpers/menuItens'
-
+import Link from 'next/link'
+import Item from '../pagesItens/pagesItens'
 
 const Menu:React.FC = () => {
     return (
         <MenuBox>
-            {itens.map((item, i) => <SItem key={i} {...item} />)}
+            {itens.map((item, i) => <Item key={i} {...item} />)}
         </MenuBox>
     )
 }

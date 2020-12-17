@@ -1,13 +1,7 @@
 import React from 'react'
-import { HeaderBox, SHeaderItem } from './header.style'
+import { HeaderBox } from './header.style'
 import { itens } from '../../helpers/menuItens'
 import Item from '../pagesItens/pagesItens'
-interface IMenuItem {
-    name: string
-    link: string
-    iconText: string
-    color: string
-}
 
 const Menu:React.FC = () => {
     return (

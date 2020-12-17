@@ -1,5 +1,5 @@
 import React from 'react'
-import Terminal from '../components/terminal/terminal'
+import Terminal from '../../components/terminal/terminal'
 
 const Test:React.FC = () => {
     return (

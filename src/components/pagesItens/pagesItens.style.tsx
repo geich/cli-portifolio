@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const ItemIcon = styled.span`
     font-weight: 600;
+    margin-right: 10px;
 
     &#yellow {
         color: #cbbe31

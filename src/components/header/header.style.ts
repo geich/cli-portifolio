@@ -7,9 +7,15 @@ export const HeaderBox = styled.div`
     width: 100%;
     height: 45px;
     display: flex;
-`
 
+    & .menuItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 25px;
+    }
 
-export const SItem = styled(Item)`
-    color: black;
+    & .active {
+        background-color: #1e1e1e
+    }
 `
