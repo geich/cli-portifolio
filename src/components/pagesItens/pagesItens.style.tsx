@@ -25,7 +25,7 @@ export const Item = styled.div`
 
     & a {
         text-decoration: none;
-        color: white
+        color: #cccccc
     }
 
 `

@@ -1,7 +1,6 @@
 import React from 'react'
 import { MenuBox } from './menu.style'
 import { itens } from '../../helpers/menuItens'
-import Link from 'next/link'
 import Item from '../pagesItens/pagesItens'
 
 const Menu:React.FC = () => {
