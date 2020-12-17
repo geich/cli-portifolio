@@ -1,27 +1,12 @@
 import React from 'react'
-import { MenuBox, MenuItemIcon, SMenuItem } from './menu.style'
-import Link from 'next/link'
-import { itens } from './menuItens'
-interface IMenuItem {
-    name: string
-    link: string
-    iconText: string
-}
+import { MenuBox, SItem } from './menu.style'
+import { itens } from '../../helpers/menuItens'
 
-const MenuItem:React.FC<IMenuItem> = ({ link, iconText, name }) => {
-    return (
-        <SMenuItem>
-            <Link href={link}>
-                <a><MenuItemIcon>{iconText}</MenuItemIcon> {name}</a>
-            </Link>
-        </SMenuItem>
-    )
-}
 
 const Menu:React.FC = () => {
     return (
         <MenuBox>
-            {itens.map((item, i) => <MenuItem key={i} {...item} />)}
+            {itens.map((item, i) => <SItem key={i} {...item} />)}
         </MenuBox>
     )
 }
