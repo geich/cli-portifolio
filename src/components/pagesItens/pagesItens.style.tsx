@@ -16,7 +16,7 @@ export const ItemIcon = styled.span`
 
 `
 export const Item = styled.div`
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
 
     &:hover {
