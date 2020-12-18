@@ -11,7 +11,6 @@ interface IItem {
 }
 
 const PagesItens:React.FC<IItem> = ({ link, iconText, name, color, router }) => {
-    console.log(router)
     return (
         <Link href={link}>
             <Item className={`menuItem ${link === router.pathname ? 'active' : ''}`}><ItemIcon id={color}>{iconText}</ItemIcon>{name}</Item>
